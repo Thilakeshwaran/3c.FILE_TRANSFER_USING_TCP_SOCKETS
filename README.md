@@ -8,7 +8,7 @@ To write a python program for creating File Transfer using TCP Sockets Links
 4. Open the file and then send it to the client in byte format.
 5. In the client side receive the file from server and then write the content into it.
 ## PROGRAM
-### CLIENT
+# client:
 ```
 import socket 
 s = socket.socket() 
@@ -28,8 +28,9 @@ f.close()
 print('Successfully get the file') 
 s.close() 
 print('connection closed')
+
 ```
-### SERVER
+# server:
 ```
 import socket                    
 port = 60000                    
@@ -37,27 +38,30 @@ s = socket.socket()
 host = socket.gethostname()      
 s.bind((host, port))
 s.listen(5)                      
-while True: 
-    conn, addr = s.accept()      
-    data = conn.recv(1024) 
-    print('Server received', repr(data)) 
-    filename='mytext.txt' 
-    f = open(filename,'rb') 
-    l = f.read(1024) 
-    while (l): 
-       conn.send(l) 
-       print('Sent ',repr(l)) 
-       l = f.read(1024) 
-    f.close() 
-    print('Done sending') 
-    conn.send('Thank you for connecting'.encode()) 
-    conn.close()
+while True:
+   conn, addr = s.accept()      
+   data = conn.recv(1024) 
+   print('Server received', repr(data)) 
+   filename='mytext.txt' 
+   f = open(filename,'rb') 
+   l = f.read(1024) 
+   while (l): 
+      conn.send(l) 
+      print('Sent ',repr(l)) 
+      l = f.read(1024) 
+   f.close() 
+   print('Done sending') 
+   conn.send('Thank you for connecting'.encode()) 
+   conn.close() 
+
 ```
 ## OUPUT
-### CLIENT
-![image](https://github.com/Magathi7/3c.FILE_TRANSFER_USING_TCP_SOCKETS/assets/144870480/884226a5-5c4f-4bc1-acff-db707881e97d)
-### SERVER
-![image](https://github.com/Magathi7/3c.FILE_TRANSFER_USING_TCP_SOCKETS/assets/144870480/983ce156-4f80-49f1-87f8-51ed598610ab)
+# client:
+![Screenshot 2024-03-22 144649](https://github.com/Ashwathm12/3c.FILE_TRANSFER_USING_TCP_SOCKETS/assets/138849225/cb8a84c0-6789-4a69-97f4-3b949d228c3d)
+
+# server:
+![Screenshot 2024-03-22 144656](https://github.com/Ashwathm12/3c.FILE_TRANSFER_USING_TCP_SOCKETS/assets/138849225/744fc4f7-0ba6-45ec-b480-44749843866e)
+
 ## RESULT
 Thus, the python program for creating File Transfer using TCP Sockets Links was 
-successfully created and executed.
+successfully created and executed.
